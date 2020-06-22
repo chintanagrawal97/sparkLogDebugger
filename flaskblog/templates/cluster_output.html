@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        {% if current_user.is_authenticated %}
+            <div>
+            <p class="article-title">Cluster Id : {{ cluster.clusterId }}</p>
+            <p class="article-title">Application Id : {{ cluster.applicationId }}</p>
+            <p class="article-title">Logs Location : {{ cluster.logPath }}</p>
+          </div>
+       
+      </div>
+      <div class="media-body">
+        <div class="article-metadata">
+         
+          {% for clusterlog in allclusterLogs %}
+          <p class="article-content"></p>{{ clusterlog.error }}</p>
+          <p class="article-content">--------- Stack Trace ------------<br/>{{ clusterlog.description }}<br/>----------------------------------</p>
+
+          <p class="article-content">Container Location : {{ clusterlog.location }}</p>
+          <p class="article-content">==========================================================</p>
+
+          {% endfor %}
+    
+
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </article> 
+
+
+{% endblock content %}

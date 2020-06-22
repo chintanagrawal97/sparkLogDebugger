@@ -1,0 +1,5 @@
+# Ignore the python Binaries
+spark/
+
+#Ignore Json files 
+sample.json
